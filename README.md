@@ -40,8 +40,9 @@ onto `gpio`/`command`.
 
 - **Humans** → OAuth, GitHub as the upstream IdP, restricted to
   `ALLOWED_GITHUB_LOGINS`. It controls physical hardware; keep the list tight.
-- **The board** → a `DEVICE_TOKEN` secret on `/link` (a microcontroller can't run
-  a browser OAuth flow). v0 is one shared token; per-board keys are the next step.
+- **The board** → a `DEVICE_TOKEN` on `/link` (a microcontroller can't run a browser
+  OAuth flow) — a `wrangler secret`, never committed. Per-board keys are the planned
+  next step.
 
 ## Wire protocol (DO ↔ board)
 
