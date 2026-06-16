@@ -1,0 +1,9 @@
+node_modules/
+.dev.vars
+# Keep the template tracked — global ~/.gitignore_global (**/.*) hides dotfiles.
+!.dev.vars.example
+.wrangler/
+dist/
+worker-configuration.d.ts
+*.log
+.DS_Store

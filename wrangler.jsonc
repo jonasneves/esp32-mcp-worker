@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "esp32-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Two Durable Objects: the McpAgent (one per MCP session) and the board link
+  // (one per board id, holding its outbound WSS). Both SQLite-backed.
+  "durable_objects": {
+    "bindings": [
+      { "name": "ESP_MCP", "class_name": "EspMcp" },
+      { "name": "BOARD_LINK", "class_name": "BoardLink" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["EspMcp", "BoardLink"] }],
+
+  // OAuthProvider persists grants + tokens here.
+  // Create with: wrangler kv namespace create OAUTH_KV  → paste the id below.
+  "kv_namespaces": [{ "binding": "OAUTH_KV", "id": "REPLACE_WITH_KV_ID" }],
+
+  // Non-secret config. Secrets (GITHUB_CLIENT_SECRET, DEVICE_TOKEN,
+  // GITHUB_CLIENT_ID) go through `wrangler secret put` / .dev.vars — never here.
+  "vars": {
+    "ALLOWED_GITHUB_LOGINS": "jonasneves",
+    "BOARD_ID": "robot"
+  },
+
+  "observability": { "enabled": true }
+}

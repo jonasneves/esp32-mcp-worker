@@ -1,0 +1,18 @@
+# Local dev secrets — copy to .dev.vars (gitignored) and fill in.
+# In production each becomes `wrangler secret put <NAME>`.
+
+# GitHub OAuth app (Settings → Developer settings → OAuth Apps).
+# Authorization callback URL = https://<your-worker>/callback
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+
+# Shared secret the board presents on /link?token=... (or x-device-token header).
+# Generate one: openssl rand -hex 32
+DEVICE_TOKEN=
+
+# Comma-separated GitHub logins allowed to control the board. Empty = anyone who
+# can authenticate. This gates physical hardware — keep it tight.
+ALLOWED_GITHUB_LOGINS=jonasneves
+
+# Which board id a session drives (matches the board's /link?board=... ).
+BOARD_ID=robot
