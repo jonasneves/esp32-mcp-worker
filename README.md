@@ -1,5 +1,12 @@
 # esp32-mcp
 
+> **Archived — superseded.** This Worker translated MCP tool calls into a private
+> frame protocol the board understood. The successor design deletes the translation
+> layer: the ESP32 runs the MCP server *on-chip* (JSON-RPC over its outbound
+> WebSocket) and the cloud shrinks to an OAuth front + byte-for-byte relay. Same
+> dial-out topology, no protocol of its own to maintain. The deployed Worker and
+> domain are gone; the code remains as a reference for the relay/OAuth patterns.
+
 A remote **MCP control plane for an ESP32 over WiFi**. An LLM client (claude.ai,
 Claude Desktop, any MCP client) connects to one authenticated endpoint and gets
 hands on the board — set a pin, read telemetry, send a command — from anywhere.
