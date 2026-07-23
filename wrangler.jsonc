@@ -17,7 +17,10 @@
 
   // OAuthProvider persists grants + tokens here.
   // Create with: wrangler kv namespace create OAUTH_KV  → paste the id below.
-  "kv_namespaces": [{ "binding": "OAUTH_KV", "id": "REPLACE_WITH_KV_ID" }],
+  "kv_namespaces": [{ "binding": "OAUTH_KV", "id": "e3d69b7563ef44dd93d489246f733834" }],
+
+  // Custom subdomain (root paths — a path route would break /callback + /mcp).
+  "routes": [{ "pattern": "esp32-mcp.neves.cloud", "custom_domain": true }],
 
   // Non-secret config. Secrets (GITHUB_CLIENT_SECRET, DEVICE_TOKEN,
   // GITHUB_CLIENT_ID) go through `wrangler secret put` / .dev.vars — never here.
